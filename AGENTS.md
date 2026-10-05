@@ -22,6 +22,12 @@ The application is designed to perform basic operations and formula-based calcul
 - `str(float)` differs between Py2 (12 sig digits) and Py3 (shortest repr). Never assert exact float display strings in tests; use `float(...)` + `assertAlmostEqual`.
 - Stale `.pyc` files sit next to every source file; ignore them, never edit them.
 
+## GitHub remote safety
+
+- Remote: `https://github.com/pinknyashka/calculator.git` (public). Push with `git push` (first run triggers Git Credential Manager browser login), or token-embedded: `git -c credential.helper= push "https://<TOKEN>@github.com/pinknyashka/calculator.git" main:main`.
+- Creating branches, pushing commits, and opening PRs are allowed.
+- NEVER delete on the remote without explicit user permission: no `git push --delete`, no `push :<branch>`, no force-push, no rewriting/deleting commits, no deleting the repository.
+
 ## Architecture
 
 - `calculator/core.py` — pure functions: binary `OPERATORS` (`+ - * / pow`), unary `UNARY_OPERATORS` (`sqrt`); `calculate()` parses `"a op b"` or `"a sqrt"` / `"sqrt a"`. `core.pow` deliberately shadows the builtin.
